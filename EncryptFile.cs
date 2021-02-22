@@ -41,7 +41,10 @@ namespace UiPathTeam.Encryption
       RijndaelManaged rijndaelManaged = new RijndaelManaged();
       rijndaelManaged.KeySize = 256;
       rijndaelManaged.BlockSize = 256;
-      CryptoStream cryptoStream = new CryptoStream((Stream) fileStream1, rijndaelManaged.CreateEncryptor(bytes, bytes), CryptoStreamMode.Write);
+      CryptoStream cryptoStream = new CryptoStream(
+        (Stream) fileStream1,
+        rijndaelManaged.CreateEncryptor(bytes, bytes), 
+        CryptoStreamMode.Write);
       FileStream fileStream2 = new FileStream(inputFile, FileMode.Open);
       int num;
       while ((num = fileStream2.ReadByte()) != -1)
